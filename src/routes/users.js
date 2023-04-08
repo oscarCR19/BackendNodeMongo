@@ -8,7 +8,7 @@ router.get('/get', async (req, res) => {
     const users = await User.findOne({email:_email,passw:_passw});
     res.json(users);
     
-       
+        
 });
 
 router.post('/add', async (req, res) => {
