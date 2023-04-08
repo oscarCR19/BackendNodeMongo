@@ -3,9 +3,10 @@ const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
     email: String,
-    pwd: String,
+    passw: String,
     name: String,
-    status: Boolean
+    phone:String,
+    id:String
 });
 
 module.exports = mongoose.model('user', UserSchema);

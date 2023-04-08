@@ -6,17 +6,18 @@ const app = express();
 
 
 const usersRoutes = require('./routes/users');
-
+const tasksRoutes = require('./routes/tasks');
 app.use(express.json());
 app.use(cors())
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/MusicDB')
+mongoose.connect('mongodb://127.0.0.1:27017/ToDoList')
     .then(db => console.log('db connected'))
     .catch(err => console.log(err));
 
 
 app.use('/users', usersRoutes);
+app.use('/tasks',tasksRoutes);
 
 app.set('port', 5000);
 
