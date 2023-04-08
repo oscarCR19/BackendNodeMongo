@@ -7,7 +7,7 @@ router.get('/get', async (req, res) => {
     const { _passw } = req.body;
     const users = await User.findOne({email:_email,passw:_passw});
     res.json(users);
-    
+    res.json(users);
         
 });
 
