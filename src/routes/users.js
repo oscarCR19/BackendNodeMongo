@@ -2,11 +2,15 @@ const express = require('express');
 const router = express.Router();
 const User = require('../model/users');
 
-router.get('/get', async (req, res) => {
-    const { _email } = req.body;
-    const { _passw } = req.body;
-    const users = await User.findOne({email:_email,passw:_passw});
-    res.json(users);
+router.post('/login', async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+    
+    const { email, passw } = req.body;
+    const user = await User.find({$and: [{email:email},{passw:passw}] });
+    res.json(user);
+        
     
         
 });
@@ -17,12 +21,12 @@ router.post('/add', async (req, res) => {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
 
     const user = new User(req.body);
+    console.log(user);
+    //await user.save();
 
-    await user.save();
+    //var response = { code: 200, status: 'Ok' };
 
-    var response = { code: 200, status: 'Ok' };
-
-    res.json(req.body);
+    //res.json(req.body);
 });
 
 router.post('/delete', async (req, res) => {
