@@ -8,7 +8,7 @@ const app = express();
 
 const usersRoutes = require('./routes/users');
 const tasksRoutes = require('./routes/tasks');
-
+const eventsRoutes = require('./routes/events');
 app.use(cors())
 
 app.use(express.json());
@@ -21,6 +21,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/ToDoList')
 
 app.use('/users', usersRoutes);
 app.use('/tasks',tasksRoutes);
+app.use('/events',eventsRoutes);
 
 app.set('port', 5000);
 
