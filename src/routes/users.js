@@ -21,12 +21,11 @@ router.post('/add', async (req, res) => {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
 
     const user = new User(req.body);
-    console.log(user);
-    //await user.save();
+    await user.save();
 
-    //var response = { code: 200, status: 'Ok' };
+    var response = { code: 200, status: 'Ok' };
 
-    //res.json(req.body);
+    res.json(req.body);
 });
 
 router.post('/delete', async (req, res) => {
